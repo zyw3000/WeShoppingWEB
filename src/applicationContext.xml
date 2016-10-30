@@ -44,4 +44,17 @@
 				<value>org/model/ShoppingCart.hbm.xml</value>
 				<value>org/model/Receipt.hbm.xml</value>
 				<value>org/model/News.hbm.xml</value></list>
-		</property></bean></beans>
+		</property>
+	</bean>
+	<bean id="myuserDAO" class="org.dao.imp.UserDAO">
+		<property name="sessionFactory" ref="sessionFactory"></property>
+	</bean>
+	<bean id="myuserService"
+		class="org.service.imp.UserService">
+		<property name="userDAO" ref="myuserDAO"></property>
+	</bean>
+	<bean id="myLoginCheckAction"
+		class="org.action.LoginCheckAction">
+		<property name="userService" ref="myuserService"></property >
+	</bean>
+</beans>
