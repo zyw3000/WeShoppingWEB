@@ -19,4 +19,16 @@ public class UserService implements IUserService {
 		return userDAO.serchUser(userNum, password);
 	}
 
+	public boolean addUser(Users user) {
+		return userDAO.addUser(user);
+	}
+
+	public boolean deleteUser(String userNum) {
+		return userDAO.deleteUser(userNum);
+	}
+
+	public boolean updateUser(Users user) {
+		return userDAO.updateUser(user);
+	}
+
 }

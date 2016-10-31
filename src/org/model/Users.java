@@ -43,7 +43,6 @@ public class Users implements java.io.Serializable {
 		this.orderses = orderses;
 	}
 
-	// Property accessors
 
 	public Integer getUsersId() {
 		return this.usersId;

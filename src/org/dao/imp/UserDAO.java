@@ -31,5 +31,46 @@ public class UserDAO extends HibernateDaoSupport implements IUserDAO {
 		List list = getHibernateTemplate().find("from Users");
 		return list;
 	}
+
+	public boolean addUser(Users user) {
+		try{
+			getHibernateTemplate().save(user);
+			return true;
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean deleteUser(String userNum) {
+		String hql = "from Users u " + "where u.usersNum = '" + userNum + "'";
+		try{
+			getHibernateTemplate().delete(hql);
+			return true;
+		}catch (Exception e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+
+	public boolean updateUser(Users user) {
+		try{
+			List list = getHibernateTemplate().find("from Users u " + 
+					"where u.usersId = '" + user.getUsersId() + "'");
+			if(list.size() > 0){
+				Users newU = (Users) list.get(0);
+				getHibernateTemplate().update(newU);
+				return true;
+			}else {
+				System.out.println("不存在该用户");
+				return false;
+			}
+		} catch (DataAccessException e){
+			e.printStackTrace();
+		}
+		return false;
+	}
+	
+	
 	
 }

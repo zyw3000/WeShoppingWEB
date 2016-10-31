@@ -18,11 +18,10 @@ import com.opensymphony.xwork2.ActionSupport;
 
 public class LoginCheckAction extends ActionSupport implements
 		ServletRequestAware, ServletResponseAware {
+	
 	private HttpServletRequest request;
 	private HttpServletResponse response;
 	private IUserService userService;
-
-	
 
 	public IUserService getUserService() {
 		return userService;
@@ -59,6 +58,9 @@ public class LoginCheckAction extends ActionSupport implements
 		u.setUsersNum(user.getUsersNum());
 		u.setUsersName(user.getUsersName());
 		u.setUsersPassword(user.getUsersPassword());
+		u.setUsersBalance(user.getUsersBalance());
+		u.setUsersType(user.getUsersType());
+		u.setUsersMessage(user.getUsersMessage());
 		jsonArray = jsonArray.fromObject(u);
 		json.put("result", jsonArray);
 		return json;
